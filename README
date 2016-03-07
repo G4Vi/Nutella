@@ -1,0 +1,40 @@
+//Project 3 Gavin Hayes gahayes@wpi.edu CS4513 C16
+
+To compile all projects type 'sh MakeAll.sh' which calls make on both the nutella client and nutella server
+To compile one at a time instead enter their respective directories and type make.
+
+For usage messages run either program with -h, all arguments are except movies directory are optional.
+To run the server ./nutellaServ [-p portnum] -d moviesdirectory [-r fps] default portnum is 6666. default fps is '3' frames per second
+To run the client ./nutellaClient [-r fps] default fps is '3' frames per second
+
+To tweak multicast settings/ports or orther strings, see main.h and/or the top of the main functions. It's setup to all use the same ipaddress, but both ports 16000 and 16001 are used.
+
+
+Code comments:
+Used more of C++ for this as classes were useful for organizing the program, but could be subdivided more. 
+Control flow of the programs can be scene from the respective mains as the bottom of the two main.cpps.
+
+Claypool's multicast library (msock.cpp) was extremely useful as a way to send and recieve multicast messages
+in simular manner to the regular send and read functions. You might have noticed I copied my own getsocket functions
+from previous projects for simple unicast setup.
+
+For reading a movie into a string to avoid reading from file mid transmission, method rdbuf was used from:
+http://insanecoding.blogspot.com/2011/11/how-to-read-in-file-in-c.html
+after my original method crashed the program due to concatenating strings in a loop. A faster method could have been used
+,but would have no noticable affect on program speed without having giant movies.
+
+
+
+
+Function summaries: See client.h and server.h
+
+
+Report - proj3_report.pdf
+Files:
+matrix.pcap
+starwars.pcap
+walk.pcap
+servertest.log  
+clienttest.log
+
+If I had more time I'd make some movies, but the standard 'end' delimitor ones are included.
